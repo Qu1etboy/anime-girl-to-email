@@ -1,6 +1,6 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
+export const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.ethereal.email",
   port: 587,
@@ -11,10 +11,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailOptions = (email) => ({
+export const mailOptions = (email: string) => ({
   from: process.env.EMAIL,
   to: email,
-  subject: "Purchase successful",
+  subject: "Purchase successfully",
   html: `
   <main style="width: 100%; max-width: 672px; margin: 0 auto;">
     <h1>Thank you for purchased the product from us</h1>
@@ -28,5 +28,3 @@ const mailOptions = (email) => ({
   </main>
   `,
 });
-
-module.exports = { transporter, mailOptions };

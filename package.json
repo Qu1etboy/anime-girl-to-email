@@ -5,15 +5,23 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node src/index.js"
+    "dev": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "qu1etboy",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.17",
+    "@types/nodemailer": "^6.4.7",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
   }
 }

@@ -1,10 +1,11 @@
-const express = require("express");
-const { transporter, mailOptions } = require("./lib/nodemailer");
+import express, { Request, Response } from "express";
 
-const app = express();
+import { transporter, mailOptions } from "./lib/nodemailer";
+
+export const app = express();
 app.use(express.json());
 
-app.post("/sendEmail", (req, res) => {
+app.post("/sendEmail", (req: Request, res: Response) => {
   const { email } = req.body;
 
   transporter.sendMail(mailOptions(email), function (error, info) {
@@ -22,5 +23,3 @@ app.post("/sendEmail", (req, res) => {
 app.listen(4000, () => {
   console.log("Listening at port 4000");
 });
-
-module.exports = { app };
