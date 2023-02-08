@@ -1,23 +1,21 @@
 import express, { Request, Response } from "express";
-
-import { transporter, mailOptions } from "./lib/nodemailer";
+import { sendEmail } from "./services/email";
 
 export const app = express();
 app.use(express.json());
 
-app.post("/sendEmail", (req: Request, res: Response) => {
+app.post("/sendEmail", async (req: Request, res: Response) => {
   const { email } = req.body;
 
-  transporter.sendMail(mailOptions(email), function (error, info) {
-    if (error) {
-      console.log(error);
-      res
-        .status(500)
-        .send("There was an error when sending an email please try again");
-    } else {
-      res.status(201).send("Email sent: " + info.response);
-    }
-  });
+  try {
+    const info = await sendEmail(email);
+
+    res.status(201).send(info.response);
+  } catch (err) {
+    res
+      .status(500)
+      .send("There was an error sending an email please try again.");
+  }
 });
 
 app.listen(4000, () => {
