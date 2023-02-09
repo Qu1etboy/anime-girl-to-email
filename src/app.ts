@@ -17,7 +17,3 @@ app.post("/sendEmail", async (req: Request, res: Response) => {
       .send("There was an error sending an email please try again.");
   }
 });
-
-app.listen(4000, () => {
-  console.log("Listening at port 4000");
-});
