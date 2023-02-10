@@ -6,10 +6,12 @@
   "private": true,
   "scripts": {
     "api": "pnpm --filter api run dev",
+    "web": "pnpm --filter web run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "workspaces": [
-    "api"
+    "api",
+    "web"
   ],
   "keywords": [],
   "author": "qu1etboy",
