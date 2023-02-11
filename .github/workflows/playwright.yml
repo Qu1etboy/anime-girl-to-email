@@ -22,11 +22,11 @@ jobs:
       - name: Install Playwright Browsers
         run: |
           cd e2e
-          pnpm exec playwright install --with-deps
+          npx playwright install --with-deps
       - name: Run Playwright tests
         run: |
           cd e2e
-          pnpm exec playwright test
+          npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:

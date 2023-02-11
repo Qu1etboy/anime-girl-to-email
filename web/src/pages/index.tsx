@@ -6,21 +6,33 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [isSubmit, setSubmit] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmit(true);
     setLoading(true);
 
-    await fetch("http://localhost:4000/sendEmail", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const res = await fetch("http://localhost:4000/sendEmail", {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        setSuccess(true);
+      } else {
+        setSuccess(false);
+      }
+    } catch (err) {
+      setSuccess(false);
+      console.error(err);
+    }
 
     setLoading(false);
   };
@@ -94,28 +106,52 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  <div className="w-12 h-12 rounded-full bg-green-100 p-2 flex items-center justify-center mx-auto mb-3.5">
+                  {isSuccess ? (
+                    <div className="w-12 h-12 rounded-full bg-green-100 p-2 flex items-center justify-center mx-auto mb-3.5">
+                      <svg
+                        aria-hidden="true"
+                        className="w-8 h-8 text-green-500"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      <span className="sr-only">Success</span>
+                    </div>
+                  ) : (
                     <svg
-                      aria-hidden="true"
-                      className="w-8 h-8 text-green-500"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      width="32"
                       xmlns="http://www.w3.org/2000/svg"
+                      className="fill-red-500 mb-3.5 w-12 h-12"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      ></path>
+                      <g>
+                        <g id="Error_1_">
+                          <g id="Error">
+                            <circle cx="16" cy="16" id="BG" r="16" />
+                            <path
+                              d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z"
+                              id="Exclamatory_x5F_Sign"
+                              className="fill-white"
+                            />
+                          </g>
+                        </g>
+                      </g>
                     </svg>
-                    <span className="sr-only">Success</span>
-                  </div>
+                  )}
                   <p
                     id="output-msg"
                     className="mb-4 text-lg text-center font-semibold text-gray-900"
                   >
-                    Successfully sent your email. Check your email to see the
-                    result.
+                    {isSuccess
+                      ? "Successfully sent your email. Check your email to see the result."
+                      : "There was an error sending your email please try again."}
                   </p>
                   <button
                     data-modal-toggle="successModal"
