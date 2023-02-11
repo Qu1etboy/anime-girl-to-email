@@ -87,7 +87,6 @@ export default defineConfig({
   webServer: {
     command: "pnpm --filter web run dev",
     url: "http://localhost:3000/",
-    port: 3000,
     timeout: 120000,
   },
 });
