@@ -7,11 +7,12 @@
   "scripts": {
     "api": "pnpm --filter api run dev",
     "web": "pnpm --filter web run dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:e2e": "pnpm --filter e2e test"
   },
   "workspaces": [
     "api",
-    "web"
+    "web",
+    "e2e"
   ],
   "keywords": [],
   "author": "qu1etboy",
