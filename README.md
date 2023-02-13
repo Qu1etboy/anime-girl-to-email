@@ -5,13 +5,19 @@ Using nodemailer to sent an anime girl picture to your email.
 **Sneak peek of what you will receive**
 ![](/docs/images/sample.png)
 
-## Stack
+## Why?
+
+First I want to learn how to sent an email using node.js, then I thought, what should I sent to the receiver?
+So I think sent them an anime girl would be funny. In this project I have learn about what is a mono-repo, how to unit-test with jest and supertest and write an e2e test using playwright. Also learn about github actions.
+
+## Built with
 
 - Next.js
+- TailwindCSS
 - Node.js
-- TypeScript
 - Nodemailer
 - Jest
+- Playwright
 
 ## Setup
 
@@ -21,13 +27,13 @@ Using nodemailer to sent an anime girl picture to your email.
 pnpm install
 ```
 
-- Start server
+- Start api server
 
 ```bash
 pnpm api
 ```
 
-- Start web
+- Start web server
 
 ```bash
 pnpm web
