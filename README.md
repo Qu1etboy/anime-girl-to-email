@@ -27,14 +27,14 @@ So I think sent them an anime girl would be funny. In this project I have learn 
 pnpm install
 ```
 
-- Start api server
+- Running in development mode
 
 ```bash
-pnpm api
+pnpm dev
 ```
 
-- Start web server
+- Running e2e test with playwright
 
 ```bash
-pnpm web
+pnpm test:e2e
 ```

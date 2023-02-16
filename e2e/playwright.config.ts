@@ -90,5 +90,6 @@ export default defineConfig({
     command: "pnpm --filter web run dev",
     url: "http://localhost:3000/",
     timeout: 120000,
+    reuseExistingServer: true,
   },
 });
