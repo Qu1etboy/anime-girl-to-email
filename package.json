@@ -7,6 +7,7 @@
   "scripts": {
     "api": "pnpm --filter api run dev",
     "web": "pnpm --filter web run dev",
+    "dev": "concurrently \"pnpm api\" \"pnpm web\"",
     "test:e2e": "pnpm --filter e2e test"
   },
   "workspaces": [
@@ -16,5 +17,8 @@
   ],
   "keywords": [],
   "author": "qu1etboy",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
 }
