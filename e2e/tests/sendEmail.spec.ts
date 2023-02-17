@@ -1,14 +1,14 @@
 import { test, expect } from "@playwright/test";
 
 test("has title", async ({ page }) => {
-  await page.goto("http://localhost:3000/");
+  await page.goto("/");
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Anime Girl To Email/);
 });
 
 test("have description text", async ({ page }) => {
-  await page.goto("http://localhost:3000/");
+  await page.goto("/");
 
   await expect(page.getByRole("paragraph")).toHaveText(
     "Enter your email to recieve an anime girl picture"
@@ -16,7 +16,7 @@ test("have description text", async ({ page }) => {
 });
 
 test("should sent an email successfully", async ({ page }) => {
-  await page.goto("http://localhost:3000/");
+  await page.goto("/");
 
   await page.route("http://localhost:4000/sendEmail", async (route) => {
     await route.fulfill({ status: 201 });
@@ -33,7 +33,7 @@ test("should sent an email successfully", async ({ page }) => {
 });
 
 test("should failed to sent an email", async ({ page }) => {
-  await page.goto("http://localhost:3000/");
+  await page.goto("/");
 
   // mock the api response to return status 500 that should failed to sent an email
   await page.route("http://localhost:4000/sendEmail", async (route) => {
