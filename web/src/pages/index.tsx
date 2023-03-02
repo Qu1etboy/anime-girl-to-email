@@ -49,7 +49,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col items-center">
-        <h1 className="text-6xl font-extrabold mt-10 mb-5 bg-clip-text bg-center text-black/20 bg-[url('https://e1.pxfuel.com/desktop-wallpaper/265/998/desktop-wallpaper-girls-minimalism-pink-background-anime-mugs-school-group-anime-dp.jpg')]">
+        <h1 className="mt-10 mb-5 bg-[url('https://e1.pxfuel.com/desktop-wallpaper/265/998/desktop-wallpaper-girls-minimalism-pink-background-anime-mugs-school-group-anime-dp.jpg')] bg-clip-text bg-center text-6xl font-extrabold text-black/20">
           Anime Girl To Email
         </h1>
         <Image
@@ -65,20 +65,20 @@ export default function Home() {
             type="email"
             id="input-email"
             placeholder="yourname@example.com"
-            className="p-3 rounded-md rounded-r-none border w-full"
+            className="w-full rounded-md rounded-r-none border p-3"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
           <button
             id="btn-submit"
-            className="bg-blue-500 p-3 border border-blue-600 rounded-r-md text-white"
+            className="rounded-r-md border border-blue-600 bg-blue-500 p-3 text-white"
           >
             Submit
           </button>
         </form>
         {isSubmit && (
-          <div className="fixed flex justify-center items-center w-full h-screen">
-            <div className="w-96 h-96 flex flex-col justify-center items-center bg-white border rounded-md p-5 z-10">
+          <div className="fixed flex h-screen w-full items-center justify-center">
+            <div className="z-10 flex h-96 w-96 flex-col items-center justify-center rounded-md border bg-white p-5">
               {isLoading ? (
                 <>
                   <div className="mb-5">
@@ -87,7 +87,7 @@ export default function Home() {
                   <div role="status">
                     <svg
                       aria-hidden="true"
-                      className="inline w-10 h-10 mr-2 text-gray-200 animate-spin fill-blue-600"
+                      className="mr-2 inline h-10 w-10 animate-spin fill-blue-600 text-gray-200"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -107,10 +107,10 @@ export default function Home() {
               ) : (
                 <>
                   {isSuccess ? (
-                    <div className="w-12 h-12 rounded-full bg-green-100 p-2 flex items-center justify-center mx-auto mb-3.5">
+                    <div className="mx-auto mb-3.5 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 p-2">
                       <svg
                         aria-hidden="true"
-                        className="w-8 h-8 text-green-500"
+                        className="h-8 w-8 text-green-500"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@ export default function Home() {
                       viewBox="0 0 32 32"
                       width="32"
                       xmlns="http://www.w3.org/2000/svg"
-                      className="fill-red-500 mb-3.5 w-12 h-12"
+                      className="mb-3.5 h-12 w-12 fill-red-500"
                     >
                       <g>
                         <g id="Error_1_">
@@ -147,7 +147,7 @@ export default function Home() {
                   )}
                   <p
                     id="output-msg"
-                    className="mb-4 text-lg text-center font-semibold text-gray-900"
+                    className="mb-4 text-center text-lg font-semibold text-gray-900"
                   >
                     {isSuccess
                       ? "Successfully sent your email. Check your email to see the result."
@@ -156,7 +156,7 @@ export default function Home() {
                   <button
                     data-modal-toggle="successModal"
                     type="button"
-                    className="py-2 px-3 text-sm font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300"
+                    className="focus:ring-primary-300 rounded-lg bg-blue-600 py-2 px-3 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4"
                     onClick={() => setSubmit(false)}
                   >
                     Continue
@@ -164,13 +164,13 @@ export default function Home() {
                 </>
               )}
             </div>
-            <div className="fixed w-full h-screen bg-black/40"></div>
+            <div className="fixed h-screen w-full bg-black/40"></div>
           </div>
         )}
-        <div className="flex mt-10">
+        <div className="mt-10 flex">
           <a
             href="https://github.com/Qu1etboy/anime-girl-to-email"
-            className="flex items-center gap-2 hover:bg-gray-100 p-2 rounded-md"
+            className="flex items-center gap-2 rounded-md p-2 hover:bg-gray-100"
           >
             <span>
               <svg
